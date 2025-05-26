@@ -1,0 +1,182 @@
+body {
+    background-color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    justify-content:justify;
+}
+header, footer{
+    background-color: skyblue;
+    padding: 15px;
+    text-align: center;
+}
+header~h3{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+section{
+    margin-bottom: auto;
+    margin-top: auto;
+    background-color: forestgreen;
+    padding: 15px;
+}
+
+nav {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+  }
+a:hover {
+    background-color: #009688;
+  }
+nav a:first-child:hover {
+    color: #ff4081;
+    background-color: #e1bee7;
+  }
+nav a:nth-child(2):hover {
+    color: #2196f3;
+    background-color: #bbdefb;
+  }
+section a {
+    color: darkgreen;
+    font-style: italic;
+  }
+
+#definition,
+#citation {
+  color: #2f4f4f;
+  font-style: italic;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-left: 4px solid #4CAF50;
+  margin: 15px 0;
+}
+
+#postit {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.postit-item {
+  background-color: #ffe082;
+  border: 1px solid #ccc;
+  position: relative;
+  padding: 15px;
+  margin: 10px;
+  width: 200px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+#postit li:nth-child(1) {
+  background-color: #ffccbc;
+}
+
+#postit li:nth-child(2) {
+  background-color: #c8e6c9;
+}
+
+#postit li:nth-child(3) {
+  background-color: #bbdefb;
+}
+
+#postit li:nth-child(4) {
+  background-color: #d1c4e9;
+}
+
+.postit-item ul {
+  display: none;
+  position: absolute;
+  min-width: 150px;
+  z-index: 1000;
+  background-color: #fff8dc;
+  border: 1px solid #999;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.postit-item:hover ul {
+  display: block;
+}
+
+.postit-item ul li {
+  color: #333;
+  padding: 5px 0;
+  font-size: 0.9em;
+}
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  header, footer {
+    background-size: cover;
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #postit {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .postit-item {
+    width: 90%;
+  }
+
+  .postit-item ul {
+    left: 0;
+    right: 0;
+  }
+
+  table {
+    width: 100%;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  form {
+    width: 100%;
+  }
+}
+
+/* Pour les écrans moyens (tablette : entre 601px et 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    font-size: 17px;
+  }
+
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .postit-item {
+    width: 45%;
+  }
+}
+
+/* Pour les grands écrans (plus de 900px) */
+@media screen and (min-width: 901px) {
+  body {
+    font-size: 18px;
+  }
+
+  .postit-item {
+    width: 30%;
+  }
+}
