@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ensemble Jamais Seul - Jouer et se connecter</title>
+ <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    /* Animation entrée */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.7s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Message de confirmation animé */
+    #result {
+      margin-top: 1rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #result.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">Plu Jamais Seul(e) </h1>
+    <img src="https://img.icons8.com/ios-filled/100/000000/handshake.png" alt="Icône de soutien" class="logo-icon" />
+    <nav>
+      <ul class="menu">
+        <li><a href="acceuil.html">Accueil</a></li>
+        <li><a href="informations.html">Informations</a></li>
+        <li><a href="jouer.html">Trouver des amis</a></li>
+        <li><a href="A propos.html">A propos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="community fade-in" style="animation-delay: 0.1s;">
+      <h2>Rejoins une communauté !</h2>
+
+      <div class="games">
+        <h3>🎲 Jeux en ligne :</h3>
+        <h4>Trouver des amis sur tes jeux préféré</h2>
+        <ul>
+          <li><a href="https://www.dropingame.com/fr/" target="_blank" rel="noopener noreferrer">Site : Dropingame</a></li>
+          <li><a href="https://mately.gg/trouve-tes-mates-avec-lapplication-mately/" target="_blank" rel="noopener noreferrer">Application : Mately</a></li>
+        </ul>
+        <h4>Trouver des jeux sur lesquelles tu peut trouver des amis</h4>
+        <ul>
+          <li><a href="https://freetrial.finalfantasyxiv.com/fr" target="_blank" rel="noopener noreferrer"> Jeux Ordianteur : Mmorpg Final Fantasy 14</a></li>
+          <li><a href="https://www.roblox.com/fr" target="_blank" rel="noopener noreferrer"> Jeux vidéo multiplateforme: Roblox</a></li>
+          <li><a href="https://fr.boardgamearena.com/" target="_blank" rel="noopener noreferrer">Site : Jouer à des jeux de société</a></li>
+          <li><a href="https://discord.com/invite/loup-garou" target="_blank" rel="noopener noreferrer">Discord: Jouer à Loup-Garou</a></li>
+        </ul>
+      </div>
+
+      <div class="groups">
+        <h3>👥 Groupes de discussion :</h3>
+        <ul>
+          <li><a href="https://forum.doctissimo.fr/sante/handicap/liste_sujet-1.htm" target="_blank" rel="noopener noreferrer">Site : Forum sur le handicap</a></li>
+          <li><a href="https://www.doctolib.fr/psychiatre" target="_blank" rel="noopener noreferrer">Site: Trouve un psychiatre proche de chez toi</a></li>
+          <li><a href="https://discord.gg/SpNmkTub" target="_blank" rel="noopener noreferrer">Discord: Safe Place LGBT</a></li>
+        </ul>
+        <h3> Tu peut aussi trouver d'autre endroit de discution avec:</h3>
+        <ul>
+          <li>Groupes Facebook : tape des mots-clés comme handicap moteur, vivre avec un handicap, santé mentale France, etc.</li>
+          <li>Discord (via Disboard.org) : cherche "handicap", "santé mentale", "entraide handicap", il existe des serveurs communautaires très actifs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="form-section fade-in" style="animation-delay: 0.3s;">
+      <h3>Trouve des gens comme toi !</h3>
+      <form id="friendForm">
+        <label for="prenom">Ton prénom :</label>
+        <input type="text" id="prenom" name="prenom" required />
+
+        <label for="interets">Tes centres d'intérêt :</label>
+        <input type="text" id="interets" name="interets" required />
+
+        <label for="message">Que cherches-tu ? (ex: amis pour discuter, groupe de jeu, soutien...)</label>
+        <textarea id="message" name="message" rows="3" placeholder="Écris ici..." required></textarea>
+
+        <button type="submit">Trouver un groupe</button>
+      </form>
+      <p id="result"></p>
+    </section>
+  </main>
+
+  <footer>
+    <ul class="footer-links">
+      <li><a href="A propos.html">Mentions légales</a></li>
+      <li><a href="A propos.html">Contact</a></li>
+      <li><a href="A propos.html">Réseaux sociaux</a></li>
+    </ul>
+  </footer>
+  <script>
+    const form = document.getElementById('friendForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const prenom = form.prenom.value.trim();
+      const interets = form.interets.value.trim();
+      const message = form.message.value.trim();
+
+      if(prenom && interets && message){
+        result.textContent = `Merci ${prenom} ! Nous cherchons un groupe qui correspond à tes centres d'intérêt : "${interets}".\nTon message : "${message}"`;
+        result.classList.add('visible');
+        result.style.color = 'green';
+
+        // Animation: fade out puis reset
+        setTimeout(() => {
+          result.classList.remove('visible');
+          result.textContent = '';
+        }, 7000);
+
+        form.reset();
+      } else {
+        result.textContent = 'Veuillez remplir tous les champs.';
+        result.style.color = 'red';
+        result.classList.add('visible');
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
